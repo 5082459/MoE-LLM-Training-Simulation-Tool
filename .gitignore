@@ -1,0 +1,31 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environments
+.env
+.env.*
+venv/
+.venv/
+env/
+ENV/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# Logs / runtime artifacts
+*.log
+backend.log
+.streamlit/cache/
+.streamlit/secrets.toml
+
+# Builds / misc
+build/
+dist/
+.ipynb_checkpoints/
