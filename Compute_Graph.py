@@ -3,8 +3,8 @@ from typing import Any, Dict, List, Literal
 
 from pydantic import BaseModel
 
-from Precision_Policy_fork4 import get_policy
-from User_Config_fork4 import ModelConfig, PrecisionConfig, TrainConfig    
+from Precision_Policy import get_policy
+from User_Config import ModelConfig, PrecisionConfig, TrainConfig    
 
 #--------------------定义数据精度层级------------------
 dtype_bytes ={"FP32":4,"TF32":4,"FP16":2,"BF16":2,"FP8":1}
@@ -131,7 +131,7 @@ def parse_model_compute_spec(
     dff_moe = model_config.moe_intermediate_size
     L = model_config.num_hidden_layers
     L_dense = model_config.num_dense_hidden_layers
-    L_moe = L - L_dense
+
     E_router = model_config.n_routed_experts
     E_shared = model_config.n_shared_experts
     E_active = model_config.num_experts_per_tok
@@ -327,7 +327,7 @@ def parse_model_compute_spec(
         )
         components.append(RES2_comp)
 
-        #处理Dense Layers的FLOPs计算逻辑
+#------------------------------------------Dense层解析------------------------------------------
         if l <= L_dense:
             #Dense GATED_FFN_up
             Flops_GATED_FFN_UP_FWD = 2 * GBS * S * (d_model * dff_dense + beta_bias*4)

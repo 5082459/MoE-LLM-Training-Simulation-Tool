@@ -28,11 +28,11 @@ from dataclasses import dataclass
 from typing import Any, Dict, List, Tuple
 import math
 
-from Compute_Graph_fork4 import model_component_compute_spec, model_compute_graph, parse_model_compute_spec
-from GPU_Profiler_fork4 import GPUHwProfile, get_gpu_profile
-from Parallel_fork4 import build_runtime_rank_graph, runtime_rank_spec
-from Precision_Policy_fork4 import get_policy
-from User_Config_fork4 import GPU_Resource, ParallelConfig, SimulationInput
+from Compute_Graph import model_component_compute_spec, model_compute_graph, parse_model_compute_spec
+from GPU_Profiler import GPUHwProfile, get_gpu_profile
+from Parallel import build_runtime_rank_graph, runtime_rank_spec
+from Precision_Policy import get_policy
+from User_Config import GPU_Resource, ParallelConfig, SimulationInput
 
 # Dtype sets for bucket assignment
 TENSOR_CORE_DTYPES = {"fp8", "bf16", "fp16", "tf32"}

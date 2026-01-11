@@ -1,8 +1,7 @@
 from pydantic import BaseModel
 
-
 class ModelConfig(BaseModel):
-    # 模型结构-默认MOE*Dense，当前业界主流模型都是MOE，前几层是通用Dense，如deepseek-v3.1,当前注意力组件采用原始MHA实现，后续补充MLA
+    # 模型结构-默认MOE*Dense，当前业界主流模型都是MOE，前几层是通用Dense，如deepseek-v3.1,当前注意力组件采用原始MHA实现，可自行补充MLA替换
     hidden_size: int
     num_attention_heads: int
     num_hidden_layers: int

@@ -8,15 +8,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from pydeck.widget.widget import Int
 
-from Compute_Graph_fork4 import parse_model_compute_spec, parse_model_tensor_spec, tensor_spec
-from GPU_Profiler_fork4 import GPU_PROFILES, get_gpu_profile
-from Precision_Policy_fork4 import get_policy
-from User_Config_fork4 import GPU_Resource, ParallelConfig, SimulationInput
-from Parallel_fork4 import build_runtime_rank_graph
+from Compute_Graph import parse_model_compute_spec, parse_model_tensor_spec, tensor_spec
+from GPU_Profiler import GPU_PROFILES, get_gpu_profile
+from Precision_Policy import get_policy
+from User_Config import GPU_Resource, ParallelConfig, SimulationInput
+from Parallel import build_runtime_rank_graph
 
 # timeline.py 你本地项目里有（你说是最新版本）
-from frontend_app import total_tokens
-from timeline import simulate_distributed as simulate_distributed_core
+from Frontend_app import total_tokens
+from Timeline import simulate_distributed as simulate_distributed_core
 
 
 # -----------------------------
@@ -135,7 +135,7 @@ def estimate_hbm_per_gpu_bytes(
 ) -> Dict[str, Any]:
     """
     返回 “worst stage” 的 per-GPU HBM 需求（bytes），以及按 role 拆分（用于判断 OOM 根因）。
-    默认贴近 Parallel_fork4 的 batch 口径：
+    默认贴近 Parallel 的 batch 口径：
       B_local = GBS / dp / M / ep
     TP：切 hidden/ffn 维度 => activation / param 都 /tp（粗略）
     EP：MoE expert param /ep；同时 B_local /ep（已在上式体现）

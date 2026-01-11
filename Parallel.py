@@ -1,7 +1,7 @@
 from typing import Dict, List, Union
 from pydantic import BaseModel
-from Precision_Policy_fork4 import get_policy
-from User_Config_fork4 import ParallelConfig, ModelConfig, TrainConfig, PrecisionConfig, GPU_Resource      
+from Precision_Policy import get_policy
+from User_Config import ParallelConfig, ModelConfig, TrainConfig, PrecisionConfig, GPU_Resource      
 
 dtype_bytes = {"FP8": 1, "BF16": 2, "FP16": 2, "FP32": 4}
 class parallel_rank(BaseModel):
@@ -39,7 +39,6 @@ def build_runtime_rank_graph(
     E_router = model_config.n_routed_experts
     E_shared = model_config.n_shared_experts
     E_active = model_config.num_experts_per_tok
-    E_total = E_router + E_shared
     M = train_config.num_micro_batches
     precision = precision_config.policy_name
     layer_span = L // pp_size
