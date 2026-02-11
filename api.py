@@ -15,8 +15,8 @@ from User_Config import GPU_Resource, ParallelConfig, SimulationInput
 from Parallel import build_runtime_rank_graph
 
 # timeline.py 你本地项目里有（你说是最新版本）
-from Frontend_app import total_tokens
-from Timeline import simulate_distributed as simulate_distributed_core
+from frontend_app import total_tokens
+from timeline import simulate_distributed as simulate_distributed_core
 
 
 # -----------------------------
